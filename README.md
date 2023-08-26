@@ -6,3 +6,24 @@ This is a rough mirror of the [NWS Tornado Twitter bot](https://twitter.com/nwst
 
 ## Check it out
 You can check it out here: [@nwstornado.bsky.social](https://bsky.app/profile/nwstornado.bsky.social).
+
+## How to run
+1. Clone the repo:
+```
+git clone https://git.sr.ht/~jordanreger/nwstornado
+```
+
+2. Add a `.env` in the `src` directory:
+```
+touch src/.env
+```
+
+3. Add a file called `warning` in the `src` directory:
+```
+touch src/warning
+```
+
+4. Run it:
+```
+cargo run
+```
