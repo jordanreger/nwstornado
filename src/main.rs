@@ -10,9 +10,13 @@ use warning::latest_warning;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let warning = latest_warning().await?;
 
-    // TODO: add check for last warning
-    if warning != "No current tornado warnings".to_string() {
-        post_to_bluesky(warning).await?;
+    let stored_warning = std::fs::read_to_string("warning").expect("Error reading file");
+
+    if warning.clone() != stored_warning.clone() {
+        std::fs::write("warning", warning.clone()).expect("Error writing to file");
+        if warning.clone() != "No current tornado warnings".to_string() {
+            post_to_bluesky(warning.clone()).await?;
+        }
     }
 
     Ok(())

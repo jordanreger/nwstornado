@@ -55,7 +55,7 @@ pub async fn post_to_bluesky(warning_text: String) -> Result<(), Box<dyn std::er
         record: body,
     };
 
-    let post_send = client
+    let _post_send = client
         .post("https://bsky.social/xrpc/com.atproto.repo.createRecord?repo=nwstornado.bsky.social")
         .bearer_auth(auth_token)
         .header("User-Agent", "nwstornado.bsky.social")
